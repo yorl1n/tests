@@ -2,13 +2,13 @@
 <html>
   <head>
     <script type="text/javascript">
-      var addListener = function(win) {
+      var addListener = function(win, type) {
         var beforePrint = function() {
-            console.log('Functionality to run before printing.');
+            console.log('Functionality to run before printing '+type);
         };
     
         var afterPrint = function() {
-            console.log('Functionality to run after printing');
+            console.log('Functionality to run after printing '+type);
         };
     
         if (win.matchMedia) {
@@ -26,10 +26,19 @@
         
       }
       var printImg = function() {
-        addListener(window.frames['imgtest']);
+        addListener(window.frames['imgtest'], 'IMG');
         window.frames['imgtest'].print();
       }
       var generateImgFrame = function() {
+        var node = document.createElement("iframe"); 
+        node.src = "img.png";
+        node.height = "500px";
+        node.width = "500px";
+        node.name = "imgtest";
+        node.onload = printImg;
+        document.body.appendChild(node);
+      }
+      var generatePdfFrame = function() {
         var node = document.createElement("iframe"); 
         node.src = "img.png";
         node.height = "500px";
@@ -42,5 +51,6 @@
   </head>
   <body>
     <button onclick="generateImgFrame()">Test img iframe</button>
+    <button onclick="generatePdfFrame()">Test pdf iframe</button>
   </body>
 </html>
