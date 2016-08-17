@@ -2,8 +2,8 @@
 <html>
   <head>
     <script type="text/javascript">
-      var addListener = function() {
-       /* var beforePrint = function() {
+      var addListener = function(win) {
+        var beforePrint = function() {
             console.log('Functionality to run before printing.');
         };
     
@@ -11,8 +11,8 @@
             console.log('Functionality to run after printing');
         };
     
-        if (window.matchMedia) {
-            var mediaQueryList = window.matchMedia('print');
+        if (win.matchMedia) {
+            var mediaQueryList = win.matchMedia('print');
             mediaQueryList.addListener(function(mql) {
                 if (mql.matches) {
                     beforePrint();
@@ -21,9 +21,12 @@
                 }
             });
         }
-    
-        window.onbeforeprint = beforePrint;
-        window.onafterprint = afterPrint;*/
+        win.onbeforeprint = beforePrint;
+        win.onafterprint = afterPrint;
+        
+      }
+      var printImg = function() {
+        addListener(window.frames['imgtest']);
         window.frames['imgtest'].print();
       }
       var generateImgFrame = function() {
