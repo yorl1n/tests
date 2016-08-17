@@ -26,11 +26,12 @@
         window.onafterprint = afterPrint;
       }
       var generateImgFrame = function() {
-        document.body.appendChild('<iframe name="ifrimg" src="img.png" height="500px" width="500px"></iframe>');
+        document.getElementById('iframecontent').innerHtml = '<iframe name="ifrimg" src="img.png" height="500px" width="500px"></iframe>';
       }
     </script>
   </head>
   <body>
     <button onclick="generateImgFrame()">Test img iframe</button>
+    <div id="iframecontent"></div>
   </body>
 </html>
