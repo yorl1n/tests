@@ -29,6 +29,10 @@
         addListener(window.frames['imgtest'], 'IMG');
         window.frames['imgtest'].print();
       }
+      var printPdf = function() {
+        addListener(window.frames['pdftest'], 'PDF');
+        window.frames['pdftest'].print();
+      }
       var generateImgFrame = function() {
         var node = document.createElement("iframe"); 
         node.src = "img.png";
@@ -40,11 +44,11 @@
       }
       var generatePdfFrame = function() {
         var node = document.createElement("iframe"); 
-        node.src = "img.png";
+        node.src = "pdf-sample.pdf";
         node.height = "500px";
         node.width = "500px";
-        node.name = "imgtest";
-        node.onload = printImg;
+        node.name = "pdftest";
+        node.onload = printPdf;
         document.body.appendChild(node);
       }
     </script>
