@@ -3,7 +3,7 @@
   <head>
     <script type="text/javascript">
       var addListener = function() {
-        var beforePrint = function() {
+       /* var beforePrint = function() {
             console.log('Functionality to run before printing.');
         };
     
@@ -23,13 +23,16 @@
         }
     
         window.onbeforeprint = beforePrint;
-        window.onafterprint = afterPrint;
+        window.onafterprint = afterPrint;*/
+        window.frames['imgtest'].print();
       }
       var generateImgFrame = function() {
         var node = document.createElement("iframe"); 
         node.src = "img.png";
         node.height = "500px";
         node.width = "500px";
+        node.name = "imgtest";
+        node.onload = addListener;
         document.body.appendChild(node);
       }
     </script>
