@@ -7,7 +7,19 @@
         return false;
     };
     Ext.onReady(function() {
-      alert('OK');
+      Ext.create(Ext.panel.Panel, {
+          width: 500,
+          height: 500,
+          items:[{
+              xtype: 'htmleditor'
+          },{
+              xtype: 'component',
+              autoEl: {
+                  tag: 'iframe',
+                  src: 'https://yorl1n.github.io/tests'
+              } 
+          }]
+      })
     });
 </script> 
 </head>
